@@ -10,6 +10,9 @@ import PersistLogin from './Components/Extra/PersistLogin';
 import RequireAuth from './Components/Extra/RequireAuth';
 import Dashboard from './Pages/Dashboard';
 import NotFoundPage from './Pages/NotFoundPage';
+import Client from './Pages/Client';
+import Request from './Pages/Request';
+import ChangePassword from './Pages/ChangePassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,8 +20,11 @@ const router = createBrowserRouter(
       <Route index path="welcome-page" element={<StartUpPage />} />
       <Route element={<Layout />}>
         <Route element={<PersistLogin />}>
-          <Route element={<RequireAuth allowedRoles={['User']} />}>
-            <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<RequireAuth allowedRoles={['User']} />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/client" element={<Client />} />
+            <Route path="/request" element={<Request />} />
+            <Route path="/change-password" element={<ChangePassword />} />
           </Route>
         </Route>
       </Route>

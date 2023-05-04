@@ -5,6 +5,7 @@ import useAuth from '../../Hooks/useAuth';
 import useForm from '../../Hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 import useToggle from '../../Hooks/useToggle';
+import axios from '../../Api/axios';
 
 const LoginForm = () => {
   const { setAuth } = useAuth();
@@ -14,13 +15,18 @@ const LoginForm = () => {
     password: '',
   });
   const navigate = useNavigate();
-  const handleOnSubmit = (e) => {
+
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const response = await axios.post('/auth/login', formData, {
+      withCredentials: true,
+    });
+    const accessToken = response?.data?.accessToken;
+    const name = response?.data?.user;
     const user = formData.username;
-    setAuth({ user });
+    setAuth({ user, accessToken, name });
     clearForm();
-    navigate('/');
+    navigate('/dashboard');
   };
 
   return (

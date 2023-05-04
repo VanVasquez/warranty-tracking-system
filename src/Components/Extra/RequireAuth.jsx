@@ -7,7 +7,6 @@ const RequireAuth = ({ allowedRoles }) => {
   const { auth } = useAuth();
   const location = useLocation();
   const decoded = auth?.accessToken ? jwtDecode(auth.accessToken) : undefined;
-
   const role = decoded?.UserInfo?.role || '';
 
   return allowedRoles?.includes(role) ? (
