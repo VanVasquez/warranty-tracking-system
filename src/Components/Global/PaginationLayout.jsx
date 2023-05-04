@@ -18,7 +18,7 @@ const PaginationLayout = () => {
   const from = location.pathname;
   const navigate = useNavigate();
   const decoded = accessToken ? jwtDecode(accessToken) : undefined;
-  const role = decoded.UserInfo.role;
+  const role = decoded?.UserInfo.role;
 
   const navigateTo = (link) => {
     navigate(link);
