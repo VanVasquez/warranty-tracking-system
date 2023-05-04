@@ -6,6 +6,8 @@ import useForm from '../../Hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 import useToggle from '../../Hooks/useToggle';
 import axios from '../../Api/axios';
+import AlertComponent from '../Styled/AlertComponent';
+import SpinnerComponent from '../Styled/SpinnerComponent';
 
 const LoginForm = () => {
   const { setAuth } = useAuth();
@@ -14,6 +16,8 @@ const LoginForm = () => {
     username: '',
     password: '',
   });
+  const [formMessage, setFormMessage] = useState();
+  const [loading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleOnSubmit = async (e) => {
@@ -32,6 +36,8 @@ const LoginForm = () => {
   return (
     <Form onSubmit={handleOnSubmit}>
       <h1>Login</h1>
+      {loading && <SpinnerComponent animation="border" size="sm" />}
+      {formMessage}
       <Form.Group controlId="loginUsername" className="mb-4">
         <Form.Label>Username</Form.Label>
         <Form.Control

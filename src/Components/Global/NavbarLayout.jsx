@@ -13,13 +13,13 @@ const NavbarLayout = () => {
       <Container fluid>
         <Breadcrumb className="align-items-center">
           <Breadcrumb.Item>
-            <i class="bi bi-house-door-fill"></i>
+            <i className="bi bi-house-door-fill"></i>
           </Breadcrumb.Item>
           <Breadcrumb.Item active>{name}</Breadcrumb.Item>
         </Breadcrumb>
         <Navbar className="ml-auto">
           <Nav.Link onClick={logout} className="pt-0">
-            Logout <i class="bi bi-box-arrow-right"></i>
+            Logout <i className="bi bi-box-arrow-right"></i>
           </Nav.Link>
         </Navbar>
       </Container>
