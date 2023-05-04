@@ -22,15 +22,32 @@ const LoginForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios.post('/auth/login', formData, {
-      withCredentials: true,
-    });
-    const accessToken = response?.data?.accessToken;
-    const name = response?.data?.user;
-    const user = formData.username;
-    setAuth({ user, accessToken, name });
-    clearForm();
-    navigate('/dashboard');
+    setIsLoading(true);
+    setFormMessage(<p> please wait...</p>);
+    try {
+      const response = await axios.post('/auth/login', formData, {
+        withCredentials: true,
+      });
+      const accessToken = response?.data?.accessToken;
+      const name = response?.data?.user;
+      const user = formData.username;
+      setAuth({ user, accessToken, name });
+      clearForm();
+      navigate('/dashboard');
+    } catch (err) {
+      let variant = '';
+      if (err.response.status === 401) {
+        variant = 'warning';
+      } else if (err.response.status === 500) {
+        variant = 'danger';
+      }
+      setFormMessage(
+        <AlertComponent variant={variant}>{err.response.data.message}</AlertComponent>
+      );
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
