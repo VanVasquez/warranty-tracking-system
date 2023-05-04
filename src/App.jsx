@@ -14,7 +14,7 @@ import NotFoundPage from './Pages/NotFoundPage';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="welcome-page" element={<StartUpPage />} />
+      <Route index path="welcome-page" element={<StartUpPage />} />
       <Route element={<Layout />}>
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={['User']} />}>
