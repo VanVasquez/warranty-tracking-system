@@ -1,5 +1,5 @@
-import useAuth from "./useAuth";
-import useAxiosPrivate from "./useAxiosPrivate";
+import useAuth from './useAuth';
+import useAxiosPrivate from './useAxiosPrivate';
 
 const useLogout = () => {
   const { setAuth } = useAuth();
@@ -7,7 +7,7 @@ const useLogout = () => {
   const logout = async () => {
     setAuth({});
     try {
-      await instance("/user/logout", {
+      await instance('/user/logout', {
         withCredentials: true,
       });
     } catch (err) {}

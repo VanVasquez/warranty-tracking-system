@@ -8,13 +8,13 @@ const RequireAuth = ({ allowedRoles }) => {
   const location = useLocation();
   const decoded = auth?.accessToken ? jwtDecode(auth.accessToken) : undefined;
   const role = decoded?.UserInfo?.role || '';
-
+  console.log(role);
   return allowedRoles?.includes(role) ? (
     <Outlet />
   ) : auth?.user ? (
     <Navigate to="/unauthorized" state={{ from: location }} replace />
   ) : (
-    <Navigate to="/welcome-page" state={{ from: location }} replace />
+    <Navigate to="/" state={{ from: location }} replace />
   );
 };
 
