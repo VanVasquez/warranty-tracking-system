@@ -20,7 +20,7 @@ const LoginForm = () => {
     const user = formData.username;
     setAuth({ user });
     clearForm();
-    navigate('/dashboard');
+    navigate('/');
   };
 
   return (

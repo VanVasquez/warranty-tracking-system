@@ -18,7 +18,7 @@ const router = createBrowserRouter(
       <Route element={<Layout />}>
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={['User']} />}>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/" element={<Dashboard />} />
           </Route>
         </Route>
       </Route>
