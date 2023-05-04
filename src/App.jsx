@@ -18,8 +18,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route index path="welcome-page" element={<StartUpPage />} />
-      <Route element={<Layout />}>
-        <Route element={<PersistLogin />}>
+      <Route element={<PersistLogin />}>
+        <Route element={<Layout />}>
           <Route path="/" element={<RequireAuth allowedRoles={['User']} />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/client" element={<Client />} />
